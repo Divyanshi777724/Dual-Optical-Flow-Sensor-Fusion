@@ -14,28 +14,30 @@ The system performs quality-weighted fusion of two optical flow sensors on the c
 
 ## Repository Structure
 
-text
-ros2_nodes/
-    fusion_node.py
-    dmux_node.py
-    offboard_manager.py
-    position_controller.py
-    logger_node.py
-    dashboard_node.py
-    pre_flight_check.py
+## Repository Structure
 
-px4_modifications/
-    FusedOpticalFlow.msg
-    VehicleOpticalFlow_changes.md
-    dds_topics.yaml
-
-diagrams/
-    system_architecture.png
-    fusion_pipeline.png
-    controller_flowchart.png
-
-docs/
-    thesis.pdf
+Dual-Optical-Flow-Sensor-Fusion
+│
+├── ros2_nodes/
+│   ├── dmux_node.py
+│   ├── fusion_node.py
+│   ├── controller_node.py
+│   ├── logger_node.py
+│   └── dashboard_node.py
+│
+├── px4_modifications/
+│   ├── FusedOpticalFlow.msg
+│   ├── VehicleOpticalFlow_changes.md
+│   └── dds_topics.yaml
+│
+├── diagrams/
+│   ├── system_architecture.png
+│   ├── fusion_pipeline.png
+│   ├── offboard_architecture.png
+│   └── controller_flowchart.png
+│
+└── docs/
+    └── thesis.pdf
 
 ## Features
 
