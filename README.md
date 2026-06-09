@@ -14,8 +14,8 @@ The system performs quality-weighted fusion of two optical flow sensors on the c
 
 ## Repository Structure
 
-## Repository Structure
 
+```text
 Dual-Optical-Flow-Sensor-Fusion
 │
 ├── ros2_nodes/
@@ -38,6 +38,7 @@ Dual-Optical-Flow-Sensor-Fusion
 │
 └── docs/
     └── thesis.pdf
+```
 
 ## Features
 
