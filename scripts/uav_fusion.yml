@@ -1,0 +1,43 @@
+# Tmuxinator config for UAV fusion startup
+# Install: sudo gem install tmuxinator
+# Usage:   tmuxinator start uav_fusion
+# Place at: ~/.tmuxinator/uav_fusion.yml
+
+name: uav_fusion
+root: ~/ros2_ws
+
+windows:
+  - dds_agent:
+      layout: main-vertical
+      panes:
+        - dds:
+          - echo "=== Starting DDS Agent ==="
+          - sudo MicroXRCEAgent serial --dev /dev/ttyAMA0 -b 921600 -v4
+
+  - fusion:
+      layout: main-vertical
+      panes:
+        - fusion_node:
+          - echo "=== Starting Fusion Node ==="
+          - source ~/ros2_ws/install/setup.bash
+          - python3 ~/ros2_ws/src/optical_flow_fusion/scripts/fusion_node.py
+
+  - logger:
+      layout: main-vertical
+      panes:
+        - logger_node:
+          - echo "=== Starting Logger Node ==="
+          - source ~/ros2_ws/install/setup.bash
+          - python3 ~/ros2_ws/src/optical_flow_fusion/scripts/logger_node.py
+
+  - monitor:
+      layout: even-horizontal
+      panes:
+        - topic_hz:
+          - source ~/ros2_ws/install/setup.bash
+          - echo "=== Topic Hz Monitor ==="
+          - ros2 topic hz /fmu/in/fused_optical_flow
+        - quality_watch:
+          - source ~/ros2_ws/install/setup.bash
+          - echo "=== Quality Monitor ==="
+          - ros2 topic echo /fmu/out/sensor_optical_flow --field quality
