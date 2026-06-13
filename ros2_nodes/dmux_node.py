@@ -1,6 +1,5 @@
-#!/usr/bin/env python3
 """
-dmux_node.py — Demultiplexer for dual H-Flow sensor stream.
+dmux_node.py - Demultiplexer for dual H-Flow sensor stream.
 
 /fmu/out/sensor_optical_flow carries messages from both sensors interleaved.
 This node separates them by device_id and republishes to two clean topics.
@@ -23,7 +22,6 @@ from px4_msgs.msg import SensorOpticalFlow
 #  TUNABLE PARAMETERS
 # ══════════════════════════════════════════════════════════════════════════════
 
-# Physical sensor device IDs — verify with:
 #   ros2 topic echo /fmu/out/sensor_optical_flow --field device_id
 # These MUST match what PX4 assigns (changes if firmware is reflashed).
 DEVICE_ID_S1 = 0x847c03   # = 8682499  H-Flow sensor 1
