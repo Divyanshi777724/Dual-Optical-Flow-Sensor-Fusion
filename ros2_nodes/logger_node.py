@@ -1,6 +1,5 @@
-#!/usr/bin/env python3
 """
-logger_node.py — UAV data logger.
+logger_node.py - UAV data logger.
 Output: ~/uav_logs/uav_log_YYYYMMDD_HHMMSS.csv at 10 Hz
 
 Key columns:
@@ -61,13 +60,13 @@ class UavLogger(Node):
             'raw_pixel_flow_y': None,
             'raw_distance_m':   None,
 
-            # vehicle_optical_flow_vel — EKF2 processed velocity
+            # vehicle_optical_flow_vel - EKF2 processed velocity
             'of_vel_body_x':    None,
             'of_vel_body_y':    None,
             'of_vel_ne_x':      None,
             'of_vel_ne_y':      None,
 
-            # vehicle_local_position — EKF2 full state
+            # vehicle_local_position - EKF2 full state
             'local_x':          None,
             'local_y':          None,
             'local_z':          None,   # NED: negative = above ground
@@ -81,14 +80,14 @@ class UavLogger(Node):
             'local_eph':        None,   # horizontal position uncertainty [m]
             'local_evh':        None,   # horizontal velocity uncertainty [m/s]
 
-            # vehicle_attitude — quaternion
+            # vehicle_attitude - quaternion
             'q0': None, 'q1': None, 'q2': None, 'q3': None,
 
-            # sensor_combined — raw IMU
+            # sensor_combined - raw IMU
             'acc_x': None, 'acc_y': None, 'acc_z': None,
             'gyro_x': None, 'gyro_y': None, 'gyro_z': None,
 
-            # estimator_status — EKF2 health
+            # estimator_status - EKF2 health
             'ekf_vel_horiz_fused':        None,
             'ekf_opt_flow_fused':         None,
             'ekf_innovation_check_flags': None,
