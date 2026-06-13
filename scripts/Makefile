@@ -1,4 +1,4 @@
-# Makefile — UAV pipeline control
+# Makefile - UAV pipeline control
 # Usage: make <target>
 # Run from: ~/uav_ws/
 
