@@ -1,12 +1,11 @@
-#!/usr/bin/env python3
 """
-dashboard_node.py — Live UAV system health dashboard.
+dashboard_node.py - Live UAV system health dashboard.
 
 Groups:
-  1. Infrastructure  — DDS bridge, nodes running, RC signal
-  2. Sensor pipeline — fusion quality, distance, EKF2 flow vel
-  3. EKF2 state      — position, velocity, validity flags
-  4. Controller      — mode, RC sticks, commands, position lock
+  1. Infrastructure  - DDS bridge, nodes running, RC signal
+  2. Sensor pipeline - fusion quality, distance, EKF2 flow vel
+  3. EKF2 state      - position, velocity, validity flags
+  4. Controller      - mode, RC sticks, commands, position lock
 
 Requires: pip install rich --break-system-packages
 """
