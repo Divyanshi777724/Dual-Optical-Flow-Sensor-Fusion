@@ -13,8 +13,7 @@ setup(
     ],
     install_requires=['setuptools'],
     zip_safe=True,
-    maintainer='Divyanshi',
-    maintainer_email='divyanshi@zhaw.ch',
+    
     description=(
         'Dual H-Flow optical flow sensor fusion and attitude-mode position '
         'hold controller for PX4 v1.14.3 in GPS-denied indoor environments. '
@@ -28,11 +27,11 @@ setup(
             'dmux_node       = optical_flow_fusion.scripts.dmux_node:main',
             # Quality-weighted fusion → /fmu/in/fused_optical_flow → PX4 EKF2
             'fusion_node     = optical_flow_fusion.scripts.fusion_node:main',
-            # Attitude-mode position hold controller — heartbeat + setpoints
+            # Attitude-mode position hold controller - heartbeat + setpoints
             'controller_node = optical_flow_fusion.scripts.controller_node:main',
             # Logs all pipeline signals to CSV in ~/uav_logs/ at 10 Hz
             'logger_node     = optical_flow_fusion.scripts.logger_node:main',
-            # Live rich terminal dashboard — system health at 4 Hz
+            # Live rich terminal dashboard - system health at 4 Hz
             'dashboard_node  = optical_flow_fusion.scripts.dashboard_node:main',
         ],
     },
