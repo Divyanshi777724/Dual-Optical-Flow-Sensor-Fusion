@@ -1,10 +1,9 @@
-#!/usr/bin/env python3
 """
-fusion_node.py — Quality-weighted fusion of two H-Flow sensors.
+fusion_node.py - Quality-weighted fusion of two H-Flow sensors.
 
 Reads from dmux output topics, publishes FusedOpticalFlow back to PX4.
 PX4's VehicleOpticalFlow module reads this topic and feeds the result
-into EKF2. No velocity computation here — that is EKF2's job.
+into EKF2. No velocity computation here - that is EKF2's job.
 
 Architecture:
   /optical_flow/sensor1 ──┐
@@ -21,10 +20,9 @@ from rclpy.qos import QoSProfile, ReliabilityPolicy, HistoryPolicy, DurabilityPo
 from px4_msgs.msg import SensorOpticalFlow, FusedOpticalFlow, DistanceSensor
 
 # ══════════════════════════════════════════════════════════════════════════════
-#  TUNABLE PARAMETERS — edit here, nowhere else
+#  TUNABLE PARAMETERS
 # ══════════════════════════════════════════════════════════════════════════════
 
-# Physical sensor device IDs — verify with:
 #   ros2 topic echo /fmu/out/sensor_optical_flow --field device_id
 DEVICE_ID_S1    = 0x847c03   # = 8682499  H-Flow sensor 1 (body-frame aligned)
 DEVICE_ID_S2    = 0x847d03   # = 8682755  H-Flow sensor 2
@@ -33,11 +31,11 @@ DEVICE_ID_S2    = 0x847d03   # = 8682755  H-Flow sensor 2
 # 0.0 means both sensors are body-frame aligned.
 SENSOR2_YAW_DEG = 0.0
 
-# Virtual device ID written into FusedOpticalFlow — unique, non-zero.
+# Virtual device ID written into FusedOpticalFlow - unique, non-zero.
 FUSED_DEVICE_ID = 999999
 
 # Quality gate: sensors below this are excluded from fusion entirely.
-# Range: 0–255.
+# Range: 0-255.
 MIN_QUALITY     = 50
 
 # Quality penalty applied when only one sensor is available.
@@ -52,7 +50,7 @@ DIST_TIMEOUT_S  = 0.5
 # Fusion output rate (Hz).
 LOOP_HZ         = 50
 
-# Sanity bounds — pixel_flow values outside this range are rejected (rad).
+# Sanity bounds - pixel_flow values outside this range are rejected (rad).
 MAX_FLOW_RAD    = 0.5
 
 # Passed through to FusedOpticalFlow for EKF2 range gating.
@@ -242,7 +240,6 @@ class FusionNode(Node):
             self._cnt_single += 1
 
         else:
-            # ── No usable sensors — publish zeros so PX4 sees quality=0 ───
             out.pixel_flow  = [0.0, 0.0]
             out.delta_angle = [0.0, 0.0, 0.0]
             out.quality     = 0
